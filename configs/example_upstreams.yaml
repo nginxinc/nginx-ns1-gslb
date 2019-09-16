@@ -1,0 +1,26 @@
+agent:
+  interval: 10
+  interval_max_random_delay: 2
+  retry_time: 5
+nginx_plus:
+  hosts:
+    - host: "127.0.0.1"
+      port: 80
+    - host: "127.0.0.1"
+      resolve: true
+      host_header: "example.com"
+  api_endpoint: "/api"
+  client_timeout: 10
+  #resolver: "8.8.8.8:53"
+  #resolver_timeout: 10
+nsone:
+  api_key: "<NS1-API-key>"
+  client_timeout: 10
+  source_id: "<NS1-data-source-ID>"
+services:
+  method: "upstream_groups"
+  threshold: 1
+  sampling_type: "count"
+  feeds:
+    - name: "<my_backend>"
+      feed_name: "<NS1-datafeed-1>"
