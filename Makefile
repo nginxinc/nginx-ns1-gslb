@@ -8,7 +8,7 @@ DOCKER_RUN = docker run --rm -v $(shell pwd):/go/src/github.com/nginxinc/nginx-n
 DOCKER_BUILD_RUN = docker run --rm -v $(shell pwd):/go/src/github.com/nginxinc/nginx-ns1-gslb -w /go/src/github.com/nginxinc/nginx-ns1-gslb/cmd/agent/
 BUILD_IN_CONTAINER = 1
 DOCKERFILEPATH = build
-GOLANG_CONTAINER = golang:1.11
+GOLANG_CONTAINER = golang:1.13
 CONFIG_FILE=configs/example_global.yaml
 
 nginx-ns1-gslb:
