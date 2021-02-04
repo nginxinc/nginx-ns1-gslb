@@ -29,8 +29,7 @@ lint:
 	golangci-lint run
 
 container: test nginx-ns1-gslb
-	cp $(DOCKERFILEPATH)/Dockerfile ./Dockerfile
-	docker build --build-arg CONFIG_FILE=$(CONFIG_FILE) -f Dockerfile -t $(PREFIX):$(TAG) .
+	docker build --build-arg CONFIG_FILE=$(CONFIG_FILE) -f $(DOCKERFILEPATH)/Dockerfile -t $(PREFIX):$(TAG) .
 
 clean:
 	rm -f nginx-ns1-gslb
