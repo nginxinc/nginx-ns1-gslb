@@ -1,0 +1,70 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '🚀 Features'
+    labels:
+      - "feature"
+      - "enhancement"
+  - title: '💣 Breaking Change'
+    labels:
+      - "change"
+  - title: '🐛 Bug Fixes'
+    labels:
+      - "bug"
+  - title: '📝 Documentation'
+    labels:
+      - "documentation"
+  - title: '🔨 Maintenance'
+    labels:
+      - "chore"
+      - "dependencies"
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+exclude-labels:
+  - 'skip-changelog'
+autolabeler:
+  - label: 'documentation'
+    files:
+      - '*.md'
+    branch:
+      - '/docs{0,1}\/.+/'
+  - label: 'chore'
+    branch:
+      - '/chore\/.+/'
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'feature'
+    branch:
+      - '/feat\/.+/'
+      - '/feature\/.+/'
+  - label: 'enhancement'
+    branch:
+      - '/enh\/.+/'
+      - '/enhancement\/.+/'
+  - label: 'dependencies'
+    files:
+      - 'go.mod'
+      - 'go.sum'
+      - 'vendor*'
+    branch:
+      - '/deps\/.+/'
+template: |
+  ## New in NGINX Plus - NS1 Global Server Load Balancing v$RESOLVED_VERSION
+
+  $CHANGES
+
+  ## Resources
+
+  - Documentation -- https://github.com/nginxinc/nginx-ns1-gslb/blob/v$RESOLVED_VERSION/README.md
