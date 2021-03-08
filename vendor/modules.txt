@@ -1,7 +1,7 @@
 # github.com/nginxinc/nginx-plus-go-sdk v0.8.0
 ## explicit
 github.com/nginxinc/nginx-plus-go-sdk/client
-# gopkg.in/ns1/ns1-go.v2 v2.4.3
+# gopkg.in/ns1/ns1-go.v2 v2.4.4
 ## explicit
 gopkg.in/ns1/ns1-go.v2/rest
 gopkg.in/ns1/ns1-go.v2/rest/model/account
