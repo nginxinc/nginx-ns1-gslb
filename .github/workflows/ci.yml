@@ -21,7 +21,7 @@ on:
 
 env:
   DOCKER_BUILDKIT: 1
-  GOLANG_VERSION: 1.15
+  GOLANG_VERSION: 1.16
 
 jobs:
 
