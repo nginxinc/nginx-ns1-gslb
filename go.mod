@@ -1,6 +1,6 @@
 module github.com/nginxinc/nginx-ns1-gslb
 
-go 1.15
+go 1.16
 
 require (
 	github.com/nginxinc/nginx-plus-go-sdk v0.8.0
