@@ -21,20 +21,23 @@ on:
 
 env:
   DOCKER_BUILDKIT: 1
-  GOLANG_VERSION: 1.16
 
 jobs:
 
   binary:
     name: Build Binary
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Determine Go version from go.mod
+        run: echo "GO_VERSION=$(grep "go 1." go.mod | cut -d " " -f 2)" >> $GITHUB_ENV
+      - name: Setup Golang Environment
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.GO_VERSION }}
       - name: Build Binary
-        run: make nginx-ns1-gslb BUILD_IN_CONTAINER=0
-        env:
-          GOFLAGS: '-gcflags=-trimpath=${{ github.workspace }} -asmflags=-trimpath=${{ github.workspace }}'
+        run: make nginx-ns1-gslb
       - name: Cache Artifacts
         uses: actions/cache@v2.1.4
         with:
@@ -43,20 +46,20 @@ jobs:
 
   unit-tests:
     name: Unit Tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Setup Golang Environment
         uses: actions/setup-go@v2
         with:
-          go-version: '${{ env.GOLANG_VERSION }}'
+          go-version: ${{ env.GO_VERSION }}
       - name: Run Tests
-        run: make test BUILD_IN_CONTAINER=0
+        run: make test
 
   build:
     name: Build Image
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: [binary, unit-tests]
     steps:
       - name: Checkout Repository
@@ -82,6 +85,7 @@ jobs:
         with:
           file: build/Dockerfile
           context: '.'
+          target: local
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           tags: nginx/nginx-ns1-gslb:${{ github.sha }}

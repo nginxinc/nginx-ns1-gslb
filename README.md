@@ -16,7 +16,7 @@ The agent will try to open the file and configure itself, there might be 2 probl
 
 * The file can't be opened (due to a bad path or file permissions)
 * The file is opened but the data can't be used (errors or missing required parameters)
-  
+
 Both cases will make the agent fail to start with an error to describe the problem.
 
 ## Running the agent
@@ -25,12 +25,14 @@ Both cases will make the agent fail to start with an error to describe the probl
 
 `go run cmd/agent/main.go --config-file <path/to/your_file.yaml>`
 
-This will run an Agent that fetches stats from one or more NGINX Plus instances, and updates the remote NS1 feeds. 
+This will run an Agent that fetches stats from one or more NGINX Plus instances, and updates the remote NS1 feeds.
 
 ### Docker
 
 1. Build the image specifying the config file:
 `make CONFIG_FILE=<path/to/your_file.yaml> container`
+
+    **Note**: By default the binary is built locally, if you need to build it inside a container append `TARGET=container` to the command above.
 
 1. Run the container:
 `docker run nginx/nginx-ns1-gslb:<version>`
@@ -42,4 +44,4 @@ This will run an Agent that fetches stats from one or more NGINX Plus instances,
 * While running, if all NGINX Plus instances are off, the agent will send `{up: false}` to NS1 API for all the configured services.
 
 ## Tests
-Run `make test` to run the tests. Set `BUILD_IN_CONTAINER` to 0 to run the tests locally instead of inside a container.
+Run `make test` to run the tests.
