@@ -1,6 +1,6 @@
 # NGINX Plus - NS1 Global Server Load Balancing
 [![Build Status](https://travis-ci.org/nginxinc/nginx-ns1-gslb.svg?branch=master)](https://travis-ci.org/nginxinc/nginx-ns1-gslb)
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B1062%2Fgithub.com%2Fnginxinc%2Fnginx-ns1-gslb.svg?type=shield)](https://app.fossa.com/projects/custom%2B1062%2Fgithub.com%2Fnginxinc%2Fnginx-ns1-gslb?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B5618%2Fgithub.com%2Fnginxinc%2Fnginx-ns1-gslb.svg?type=shield)](https://app.fossa.com/projects/custom%2B5618%2Fgithub.com%2Fnginxinc%2Fnginx-ns1-gslb?ref=badge_shield)
 [![Go Report Card](https://goreportcard.com/badge/github.com/nginxinc/nginx-ns1-gslb)](https://goreportcard.com/report/github.com/nginxinc/nginx-ns1-gslb)
 
 **nginx-ns1-gslb** allows [NGINX Plus](https://www.nginx.com/products/nginx) to connect with NS1 API to use [NS1 managed DNS](https://ns1.com/products/managed-dns) to create a Global Server Load Balancing solution that load balances connections or requests across two or more distinct data centers or points of presence (PoPs).
