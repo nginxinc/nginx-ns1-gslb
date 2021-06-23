@@ -15,7 +15,7 @@ func TestConstructFullEndpoint(t *testing.T) {
 }
 
 func TestConfigureNginxPlus(t *testing.T) {
-	var testsCfgFail = []struct {
+	testsCfgFail := []struct {
 		input *Cfg
 		msg   string
 	}{

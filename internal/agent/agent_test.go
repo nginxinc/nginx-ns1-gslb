@@ -194,7 +194,6 @@ func TestGetUpstreamConnectionsData(t *testing.T) {
 }
 
 func TestGetGlobalConnectionsData(t *testing.T) {
-
 	testGlobalConnections := []struct {
 		statsSlice []*client.Stats
 		msg        string
