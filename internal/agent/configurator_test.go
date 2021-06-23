@@ -119,7 +119,6 @@ func TestValidateServicesCfg(t *testing.T) {
 			t.Errorf("validateServicesCfg returned an err: %v for case %v", err, testCase.msg)
 		}
 	}
-
 }
 
 func TestParseExampleConfigs(t *testing.T) {

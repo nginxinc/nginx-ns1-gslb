@@ -10,9 +10,7 @@ import (
 	"github.com/nginxinc/nginx-ns1-gslb/internal/agent"
 )
 
-var (
-	configFile = flag.String("config-file", "", "Path to the agent configuration file")
-)
+var configFile = flag.String("config-file", "", "Path to the agent configuration file")
 
 func main() {
 	flag.Parse()
@@ -27,7 +25,6 @@ func main() {
 	}
 
 	a, err := agent.New(globalConfig)
-
 	if err != nil {
 		log.Fatalf("Error creating the agent: %v", err)
 	}

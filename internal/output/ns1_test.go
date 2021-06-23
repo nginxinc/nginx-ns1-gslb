@@ -5,7 +5,7 @@ import (
 )
 
 func TestConfigureNs1(t *testing.T) {
-	var testsCfgFail = []struct {
+	testsCfgFail := []struct {
 		input *Cfg
 		msg   string
 	}{

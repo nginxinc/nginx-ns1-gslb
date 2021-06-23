@@ -5,7 +5,7 @@ import (
 )
 
 func TestResolverLookup(t *testing.T) {
-	//localhost with be resolved using the local resolver instead, so no dependency on 8.8.8.8:53
+	// localhost with be resolved using the local resolver instead, so no dependency on 8.8.8.8:53
 	resolver := NewResolver("8.8.8.8:53", 5)
 	host := "localhost"
 	addrs, err := resolver.Lookup(host)
