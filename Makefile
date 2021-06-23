@@ -17,7 +17,8 @@ test:
 	GO111MODULE=on go test ./...
 
 lint:
-	golangci-lint run
+	docker run --pull always --rm -v $(shell pwd):/nginx-ns1-gslb -w /nginx-ns1-gslb -v $(shell go env GOCACHE):/cache/go -e GOCACHE=/cache/go -e GOLANGCI_LINT_CACHE=/cache/go -v $(shell go env GOPATH)/pkg:/go/pkg golangci/golangci-lint:latest golangci-lint --color always run
+
 
 container: nginx-ns1-gslb
 	docker build --build-arg CONFIG_FILE=$(CONFIG_FILE) -f build/Dockerfile --target $(TARGET) -t $(PREFIX):$(TAG) .
