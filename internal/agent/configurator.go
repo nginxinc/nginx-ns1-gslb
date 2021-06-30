@@ -33,7 +33,7 @@ func ParseConfig(path *string) (*Config, error) {
 	}
 
 	globalConfig := &Config{}
-	err = yaml.Unmarshal([]byte(data), globalConfig)
+	err = yaml.Unmarshal(data, globalConfig)
 	if err != nil {
 		return nil, fmt.Errorf("Error while parsing the configuration file: %w", err)
 	}

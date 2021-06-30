@@ -320,7 +320,7 @@ func createExampleStatsSlice(size uint64, unavailPeer bool) []*client.Stats {
 			"zone2.org": {Processing: i + 1},
 		}
 		newStats := &client.Stats{
-			Connections: client.Connections{Active: uint64(i)},
+			Connections: client.Connections{Active: i},
 			Upstreams:   upstreams,
 			ServerZones: serverZones,
 		}
