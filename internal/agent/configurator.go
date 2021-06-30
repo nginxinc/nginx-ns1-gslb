@@ -29,20 +29,20 @@ type Config struct {
 func ParseConfig(path *string) (*Config, error) {
 	data, err := ioutil.ReadFile(*path)
 	if err != nil {
-		return nil, fmt.Errorf("Error reading file at %v: %v", path, err)
+		return nil, fmt.Errorf("Error reading file at %v: %w", path, err)
 	}
 
 	globalConfig := &Config{}
 	err = yaml.Unmarshal([]byte(data), globalConfig)
 	if err != nil {
-		return nil, fmt.Errorf("Error while parsing the configuration file: %v", err)
+		return nil, fmt.Errorf("Error while parsing the configuration file: %w", err)
 	}
 
 	globalConfig = fillWithDefaults(globalConfig)
 
 	err = validateServicesCfg(globalConfig)
 	if err != nil {
-		return nil, fmt.Errorf("Error while validating Services configuration: %v", err)
+		return nil, fmt.Errorf("Error while validating Services configuration: %w", err)
 	}
 
 	return globalConfig, nil

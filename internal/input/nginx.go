@@ -100,7 +100,7 @@ func (n *NginxPlus) Configure(cfg *Cfg) error {
 		if nHost.Resolve {
 			addrs, err = resolver.Lookup(nHost.Host)
 			if err != nil {
-				return fmt.Errorf("error trying to resolve address for [%v]: %v", nHost.Host, err)
+				return fmt.Errorf("error trying to resolve address for [%v]: %w", nHost.Host, err)
 			}
 		} else {
 			addrs = append(addrs, nHost.Host)

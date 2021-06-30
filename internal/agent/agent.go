@@ -41,17 +41,17 @@ type Cfg struct {
 func (agent *Agent) configureAll(fetcherCfg *input.Cfg, pusherCfg *output.Cfg) error {
 	err := agent.fetcher.Configure(fetcherCfg)
 	if err != nil {
-		return fmt.Errorf("fetcher configuration error: %v", err)
+		return fmt.Errorf("fetcher configuration error: %w", err)
 	}
 
 	err = agent.pusher.Configure(pusherCfg)
 	if err != nil {
-		return fmt.Errorf("pusher configuration error: %v", err)
+		return fmt.Errorf("pusher configuration error: %w", err)
 	}
 
 	err = agent.configure()
 	if err != nil {
-		return fmt.Errorf("agent configuration error: %v", err)
+		return fmt.Errorf("agent configuration error: %w", err)
 	}
 
 	return nil
@@ -60,7 +60,7 @@ func (agent *Agent) configureAll(fetcherCfg *input.Cfg, pusherCfg *output.Cfg) e
 func (agent *Agent) configure() error {
 	feedNames, err := agent.pusher.GetFeedsForSourceID(agent.pusher.Cfg.SourceID)
 	if err != nil {
-		return fmt.Errorf("error trying to get Feeds from NS1 for validation: %v", err)
+		return fmt.Errorf("error trying to get Feeds from NS1 for validation: %w", err)
 	}
 
 	agent.namedServices = make(map[string]string)
