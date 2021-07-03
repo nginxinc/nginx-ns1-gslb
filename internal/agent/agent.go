@@ -139,7 +139,7 @@ func (agent *Agent) Run() {
 
 		sleepTime := int(agent.cfg.Interval)
 		if agent.cfg.IntervalMaxRandomDelay > 0 {
-			sleepTime += rand.Intn(int(agent.cfg.IntervalMaxRandomDelay))
+			sleepTime += rand.Intn(int(agent.cfg.IntervalMaxRandomDelay)) // #nosec G404
 		}
 		log.Printf("Loop execution end, sleeping for %v seconds.", sleepTime)
 		time.Sleep(time.Duration(sleepTime) * time.Second)
