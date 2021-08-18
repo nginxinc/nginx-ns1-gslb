@@ -13,7 +13,7 @@ WORKDIR /go/src/github.com/nginxinc/nginx-ns1-gslb/cmd/agent
 COPY go.mod go.sum /go/src/github.com/nginxinc/nginx-ns1-gslb/
 RUN go mod download
 COPY . /go/src/github.com/nginxinc/nginx-ns1-gslb/
-RUN GO111MODULE=on CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /nginx-ns1-gslb
+RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o /nginx-ns1-gslb
 
 
 FROM base AS container
