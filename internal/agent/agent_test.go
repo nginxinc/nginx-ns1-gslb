@@ -7,7 +7,7 @@ import (
 	"github.com/nginxinc/nginx-ns1-gslb/internal"
 	"github.com/nginxinc/nginx-ns1-gslb/internal/input"
 	"github.com/nginxinc/nginx-ns1-gslb/internal/output"
-	"github.com/nginxinc/nginx-plus-go-sdk/client"
+	"github.com/nginxinc/nginx-plus-go-client/client"
 )
 
 func TestNewAgentFailureNoNGINXPlus(t *testing.T) {
