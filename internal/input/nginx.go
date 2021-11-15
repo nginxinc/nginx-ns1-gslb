@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/nginxinc/nginx-plus-go-sdk/client"
-	nginx "github.com/nginxinc/nginx-plus-go-sdk/client"
+	"github.com/nginxinc/nginx-plus-go-client/client"
+	nginx "github.com/nginxinc/nginx-plus-go-client/client"
 )
 
 var httpProtocol = "http://"
