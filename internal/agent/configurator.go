@@ -29,20 +29,20 @@ type Config struct {
 func ParseConfig(path *string) (*Config, error) {
 	data, err := ioutil.ReadFile(*path)
 	if err != nil {
-		return nil, fmt.Errorf("Error reading file at %v: %w", path, err)
+		return nil, fmt.Errorf("error reading file at %v: %w", path, err)
 	}
 
 	globalConfig := &Config{}
 	err = yaml.Unmarshal(data, globalConfig)
 	if err != nil {
-		return nil, fmt.Errorf("Error while parsing the configuration file: %w", err)
+		return nil, fmt.Errorf("error while parsing the configuration file: %w", err)
 	}
 
 	globalConfig = fillWithDefaults(globalConfig)
 
 	err = validateServicesCfg(globalConfig)
 	if err != nil {
-		return nil, fmt.Errorf("Error while validating Services configuration: %w", err)
+		return nil, fmt.Errorf("error while validating Services configuration: %w", err)
 	}
 
 	return globalConfig, nil
@@ -50,22 +50,22 @@ func ParseConfig(path *string) (*Config, error) {
 
 func validateServicesCfg(cfg *Config) error {
 	if len(cfg.Services.Feeds) == 0 {
-		return fmt.Errorf("At least 1 Feed needs to be defined")
+		return fmt.Errorf("at least 1 Feed needs to be defined")
 	}
 
 	if cfg.Services.SamplingType != mergeAvg && cfg.Services.SamplingType != mergeCount {
-		return fmt.Errorf("Sampling Type [%v] is not a valid type. Valid Sampling Types are: %v, %v", cfg.Services.SamplingType, mergeAvg, mergeCount)
+		return fmt.Errorf("sampling Type [%v] is not a valid type. Valid Sampling Types are: %v, %v", cfg.Services.SamplingType, mergeAvg, mergeCount)
 	}
 
 	names := make(map[string]bool)
 	for _, feed := range cfg.Services.Feeds {
 		if feed.FeedName == "" {
-			return fmt.Errorf("Feeds must define at least a feed_name")
+			return fmt.Errorf("feeds must define at least a feed_name")
 		}
 
 		if cfg.Services.Method != globalMethod {
 			if feed.Name == "" {
-				return fmt.Errorf("Feeds must define a name for method: %v", cfg.Services.Method)
+				return fmt.Errorf("feeds must define a name for method: %v", cfg.Services.Method)
 			}
 
 			if _, ok := names[feed.Name]; ok {

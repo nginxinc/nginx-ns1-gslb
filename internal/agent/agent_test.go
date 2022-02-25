@@ -20,7 +20,7 @@ func TestNewAgentFailureNoNGINXPlus(t *testing.T) {
 	}
 	_, err := New(globalCfg)
 	if err == nil {
-		t.Errorf("Agent creation err returned %+v but expected an error because NGINX Plus is not reachable", err)
+		t.Errorf("agent creation err returned %+v but expected an error because NGINX Plus is not reachable", err)
 	}
 }
 
@@ -69,7 +69,7 @@ func TestProcessData(t *testing.T) {
 		agent.services.Method = testCase.nType
 		feedData, _ := agent.processData(testCase.input)
 		if !reflect.DeepEqual(testCase.expected, feedData) {
-			t.Errorf("Agent.processData returned %v, but %v expected for case: %v", feedData, testCase.expected, testCase.msg)
+			t.Errorf("agent.processData returned %v, but %v expected for case: %v", feedData, testCase.expected, testCase.msg)
 		}
 	}
 }

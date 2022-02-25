@@ -21,12 +21,12 @@ func main() {
 
 	globalConfig, err := agent.ParseConfig(configFile)
 	if err != nil {
-		log.Fatalf("Error generating the config: %v", err)
+		log.Fatalf("error generating the config: %v", err)
 	}
 
 	a, err := agent.New(globalConfig)
 	if err != nil {
-		log.Fatalf("Error creating the agent: %v", err)
+		log.Fatalf("error creating the agent: %v", err)
 	}
 
 	go handleTermination()
