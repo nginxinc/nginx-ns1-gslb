@@ -46,11 +46,11 @@ func (ns1 *NS1) Push(data map[string]*internal.FeedData) error {
 // Configure sets the configuration for the NS1 client
 func (ns1 *NS1) Configure(cfg *Cfg) error {
 	if cfg.APIKey == "" {
-		return fmt.Errorf("The NS1 Pusher requires an API KEY to be defined")
+		return fmt.Errorf("the NS1 Pusher requires an API KEY to be defined")
 	}
 
 	if cfg.SourceID == "" {
-		return fmt.Errorf("The NS1 Pusher requires a SourceID to be defined")
+		return fmt.Errorf("the NS1 Pusher requires a SourceID to be defined")
 	}
 
 	ns1.Cfg = cfg

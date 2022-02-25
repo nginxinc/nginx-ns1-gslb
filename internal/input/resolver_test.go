@@ -11,11 +11,11 @@ func TestResolverLookup(t *testing.T) {
 	addrs, err := resolver.Lookup(host)
 
 	if len(addrs) == 0 {
-		t.Errorf("Resolver didn't return any address for host %v", host)
+		t.Errorf("resolver didn't return any address for host %v", host)
 	}
 
 	if err != nil {
-		t.Errorf("Error trying to resolve %v: %v", host, err)
+		t.Errorf("error trying to resolve %v: %v", host, err)
 	}
 }
 

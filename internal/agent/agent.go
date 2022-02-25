@@ -66,7 +66,7 @@ func (agent *Agent) configure() error {
 	agent.namedServices = make(map[string]string)
 	for _, svc := range agent.services.Feeds {
 		if _, ok := feedNames[svc.FeedName]; !ok {
-			return fmt.Errorf("Feed Name %v not found in NS1 DataFeed with source = %v. Review NS1 configuration", svc.FeedName, agent.pusher.Cfg.SourceID)
+			return fmt.Errorf("feed Name %v not found in NS1 DataFeed with source = %v. Review NS1 configuration", svc.FeedName, agent.pusher.Cfg.SourceID)
 		}
 		if agent.services.Method == globalMethod {
 			agent.namedServices[svc.FeedName] = svc.FeedName
@@ -97,7 +97,7 @@ func (agent *Agent) processData(statsSlice []*client.Stats) (map[string]*interna
 			}
 
 			if feedData == nil {
-				log.Printf("Error: [%v] source was not found in the remote NGINX Plus instance(s). Check NGINX Plus config file or agent config file.", src)
+				log.Printf("error: [%v] source was not found in the remote NGINX Plus instance(s). Check NGINX Plus config file or agent config file.", src)
 				continue
 			}
 			newData[feed] = feedData
@@ -114,7 +114,7 @@ func (agent *Agent) processData(statsSlice []*client.Stats) (map[string]*interna
 }
 
 func (agent *Agent) handleErrorAndSleep(err error) {
-	log.Printf("Error while running the main loop: %v. No data will be sent this time, will try again in %d seconds", err, agent.cfg.RetryTime)
+	log.Printf("error while running the main loop: %v. No data will be sent this time, will try again in %d seconds", err, agent.cfg.RetryTime)
 	time.Sleep(time.Duration(agent.cfg.RetryTime) * time.Second)
 }
 
@@ -134,7 +134,7 @@ func (agent *Agent) Run() {
 
 		err = agent.pusher.Push(data)
 		if err != nil {
-			log.Printf("Error pushing the data: %v", err)
+			log.Printf("error pushing the data: %v", err)
 		}
 
 		sleepTime := int(agent.cfg.Interval)
@@ -161,7 +161,7 @@ func New(globalConfig *Config) (*Agent, error) {
 // merge an array of Stats fetched from one or more NGINX Plus instances focusing on the right stats depending on the configured methods
 func (agent *Agent) mergeStats(statsSlice []*client.Stats) (map[string]*internal.FeedData, error) {
 	if len(statsSlice) == 0 {
-		return nil, fmt.Errorf("Error merging data: no data to merge, empty response")
+		return nil, fmt.Errorf("error merging data: no data to merge, empty response")
 	}
 
 	switch agent.services.Method {
@@ -173,7 +173,7 @@ func (agent *Agent) mergeStats(statsSlice []*client.Stats) (map[string]*internal
 		return getStatusZonesConnectionsData(statsSlice, agent.namedServices), nil
 	}
 
-	return nil, fmt.Errorf("Error processing the data from NGINX Plus instance(s): %v is not a valid NGINX Plus type", agent.services.Method)
+	return nil, fmt.Errorf("error processing the data from NGINX Plus instance(s): %v is not a valid NGINX Plus type", agent.services.Method)
 }
 
 func getGlobalConnectionsData(statsSlice []*client.Stats) map[string]*internal.FeedData {

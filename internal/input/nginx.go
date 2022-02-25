@@ -77,7 +77,7 @@ func (n *NginxPlus) Fetch() []*client.Stats {
 	var statsSlice []*client.Stats
 	for _, task := range finishedTasks {
 		if task.err != nil {
-			log.Printf("Error fetching from NGINX Plus instance: %v", task.err)
+			log.Printf("error fetching from NGINX Plus instance: %v", task.err)
 		} else {
 			statsSlice = append(statsSlice, task.result)
 		}
@@ -88,7 +88,7 @@ func (n *NginxPlus) Fetch() []*client.Stats {
 // Configure sets the configuration of the NginxPlus clients
 func (n *NginxPlus) Configure(cfg *Cfg) error {
 	if len(cfg.Hosts) == 0 {
-		return fmt.Errorf("The NGINX Plus Fetcher requires at least 1 host to be defined")
+		return fmt.Errorf("the NGINX Plus Fetcher requires at least 1 host to be defined")
 	}
 	n.Cfg = cfg
 	var resolvedHosts []NginxHost
