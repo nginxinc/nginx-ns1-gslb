@@ -8,7 +8,7 @@ COPY ${CONFIG_FILE} /etc/nginx-ns1-gslb/config.yaml
 ENTRYPOINT ["/nginx-ns1-gslb", "-config-file", "/etc/nginx-ns1-gslb/config.yaml"]
 
 
-FROM golang:1.18-alpine as builder
+FROM golang:1.18.1-alpine as builder
 WORKDIR /go/src/github.com/nginxinc/nginx-ns1-gslb/cmd/agent
 COPY go.mod go.sum /go/src/github.com/nginxinc/nginx-ns1-gslb/
 RUN go mod download
