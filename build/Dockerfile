@@ -1,4 +1,4 @@
-FROM alpine:3.15 as base
+FROM alpine:3.16.0 as base
 ARG CONFIG_FILE
 
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
