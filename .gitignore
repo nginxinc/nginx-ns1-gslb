@@ -36,6 +36,7 @@ default.pem
 
 # Binary
 nginx-ns1-gslb
+dist
 
 # Development configuration file
 dev_config.yaml

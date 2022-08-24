@@ -22,3 +22,12 @@ COPY --from=builder /nginx-ns1-gslb /
 
 FROM base AS local
 COPY nginx-ns1-gslb /
+
+FROM base AS goreleaser
+ARG TARGETARCH
+ARG TARGETPLATFORM
+
+LABEL org.nginx.ns1-gslb.image.build.target="${TARGETPLATFORM}"
+LABEL org.nginx.ns1-gslb.image.build.version="goreleaser"
+
+COPY dist/nginx-ns1-gslb_linux_$TARGETARCH*/nginx-ns1-gslb /
