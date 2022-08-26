@@ -1,7 +1,7 @@
 FROM alpine:3.16 as base
 ARG CONFIG_FILE
 
-RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+RUN apk add --no-cache ca-certificates
 
 COPY ${CONFIG_FILE} /etc/nginx-ns1-gslb/config.yaml
 
