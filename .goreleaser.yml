@@ -1,0 +1,30 @@
+env:
+  - CGO_ENABLED=0
+
+builds:
+  - id: nginx-ns1-gslb
+    goos:
+      - linux
+    goarch:
+      - 386
+      - amd64
+      - arm64
+      - s390x
+      - ppc64le
+    flags:
+      - -trimpath
+    gcflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    asmflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    main: ./cmd/agent
+    binary: nginx-ns1-gslb
+
+sboms:
+  - artifacts: archive
+
+changelog:
+  skip: true
+
+checksum:
+  name_template: 'sha256sums.txt'
