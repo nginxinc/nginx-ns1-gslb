@@ -111,13 +111,16 @@ func TestValidateServicesCfg(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		err := validateServicesCfg(testCase.cfg)
-		if err == nil && testCase.wantErr {
-			t.Errorf("validateServicesCfg err returned <nil>, but err expected an error for case %v", testCase.msg)
-		}
-		if err != nil && !testCase.wantErr {
-			t.Errorf("validateServicesCfg returned an err: %v for case %v", err, testCase.msg)
-		}
+		t.Run(testCase.msg, func(t *testing.T) {
+			t.Parallel()
+			err := validateServicesCfg(testCase.cfg)
+			if err == nil && testCase.wantErr {
+				t.Errorf("validateServicesCfg err returned <nil>, but err expected an error for case %v", testCase.msg)
+			}
+			if err != nil && !testCase.wantErr {
+				t.Errorf("validateServicesCfg returned an err: %v for case %v", err, testCase.msg)
+			}
+		})
 	}
 }
 
@@ -149,12 +152,15 @@ func TestParseExampleConfigs(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		_, err := ParseConfig(&testCase.path)
-		if err == nil && testCase.wantErr {
-			t.Errorf("ParseConfig err returned <nil>, but err expected an error for case %v", testCase.msg)
-		}
-		if err != nil && !testCase.wantErr {
-			t.Errorf("ParseConfig returned an err: %v for case %v", err, testCase.msg)
-		}
+		t.Run(testCase.msg, func(t *testing.T) {
+			t.Parallel()
+			_, err := ParseConfig(&testCase.path)
+			if err == nil && testCase.wantErr {
+				t.Errorf("ParseConfig err returned <nil>, but err expected an error for case %v", testCase.msg)
+			}
+			if err != nil && !testCase.wantErr {
+				t.Errorf("ParseConfig returned an err: %v for case %v", err, testCase.msg)
+			}
+		})
 	}
 }

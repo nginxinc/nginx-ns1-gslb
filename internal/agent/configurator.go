@@ -2,7 +2,7 @@ package agent
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 
 	"github.com/nginxinc/nginx-ns1-gslb/internal/input"
 	"github.com/nginxinc/nginx-ns1-gslb/internal/output"
@@ -27,7 +27,7 @@ type Config struct {
 
 // ParseConfig reads the configuration file and return a Config object ready to configure agent and resources
 func ParseConfig(path *string) (*Config, error) {
-	data, err := ioutil.ReadFile(*path)
+	data, err := os.ReadFile(*path)
 	if err != nil {
 		return nil, fmt.Errorf("error reading file at %v: %w", path, err)
 	}
