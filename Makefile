@@ -1,5 +1,5 @@
 
-VERSION = 0.1-1
+VERSION = 0.1.1
 TAG = $(VERSION)
 PREFIX = nginx/nginx-ns1-gslb
 TARGET ?= local
