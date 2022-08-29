@@ -1,3 +1,8 @@
+## This repository has been archived!
+The ns1-gslb repository has been archived and is no longer maintained. The latest release can be found on GitHub at [0.1.1 Release](https://github.com/nginxinc/nginx-ns1-gslb/releases/tag/v0.1.1).
+
+All issues are frozen so if you have any question please reach out to us at integrations@nginx.com or on the [NGINX Community Slack](https://nginxcommunity.slack.com/)
+
 # NGINX Plus - NS1 Global Server Load Balancing
 [![CI](https://github.com/nginxinc/nginx-ns1-gslb/actions/workflows/ci.yml/badge.svg)](https://github.com/nginxinc/nginx-ns1-gslb/actions/workflows/ci.yml)
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B5618%2Fgithub.com%2Fnginxinc%2Fnginx-ns1-gslb.svg?type=shield)](https://app.fossa.com/projects/custom%2B5618%2Fgithub.com%2Fnginxinc%2Fnginx-ns1-gslb?ref=badge_shield)
