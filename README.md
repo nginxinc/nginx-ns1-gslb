@@ -1,3 +1,5 @@
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
+
 ## This repository has been archived!
 The ns1-gslb repository has been archived and is no longer maintained. The latest release can be found on GitHub at [0.1.1 Release](https://github.com/nginxinc/nginx-ns1-gslb/releases/tag/v0.1.1).
 
