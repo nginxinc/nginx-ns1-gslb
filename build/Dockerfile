@@ -1,4 +1,4 @@
-FROM alpine:3.16 as base
+FROM alpine:3.18 as base
 ARG CONFIG_FILE
 
 RUN apk add --no-cache ca-certificates
